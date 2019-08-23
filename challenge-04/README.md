@@ -7,7 +7,8 @@ um único parâmetro como argumento. Essa função deve retornar `true` se o
 equivalente booleano para o valor passado no argumento for `true`, ou `false`
 para o contrário.
 */
-?
+
+var isTruthy = function(x) { return x ? true : false }
 
 // Invoque a função criada acima, passando todos os tipos de valores `falsy`.
 ?
@@ -29,35 +30,42 @@ seguintes propriedades (os valores devem ser do tipo mostrado abaixo):
 - `assentos` - Number - cinco por padrão
 - `quantidadePessoas` - Number - zero por padrão
 */
-?
+
+var carro = { marca: 'Renault', modelo: 'Megane', placa: '06-03-UJ', ano: 2002, cor: 'Prata', quantasPortas: 4, assentos: 5, quantidadePessoas: 0 }
 
 /*
 Crie um método chamado `mudarCor` que mude a cor do carro conforme a cor
 passado por parâmetro.
 */
-?
+
+carro.mudarCor = function(cor) { carro.cor = cor };
+carro.mudarCor('azul');
 
 /*
 Crie um método chamado `obterCor`, que retorne a cor do carro.
 */
-?
+
+carro.obterCor = function() { return carro.cor };
 
 /*
 Crie um método chamado `obterModelo` que retorne o modelo do carro.
 */
-?
+
+carro.obterModelo = function() { return carro.modelo };
 
 /*
 Crie um método chamado `obterMarca` que retorne a marca do carro.
 */
-?
+
+carro.obterMarca = function() { return carro.marca };
 
 /*
 Crie um método chamado `obterMarcaModelo`, que retorne:
 "Esse carro é um [MARCA] [MODELO]"
 Para retornar os valores de marca e modelo, utilize os métodos criados.
 */
-?
+
+carro.obterMarcaModelo = function() { return 'Esse carro é um ' + carro.marca + ' ' + carro.modelo };
 
 /*
 Crie um método que irá adicionar pessoas no carro. Esse método terá as
@@ -75,7 +83,19 @@ mostrar quantos assentos ainda podem ser ocupados, com a frase:
 - Se couber somente mais uma pessoa, mostrar a palavra "pessoa" no retorno
 citado acima, no lugar de "pessoas".
 */
-?
+
+carro.adicionarPessoas = function(x) {
+  if (carro.quantidadePessoas === carro.assentos) {
+    return 'O carro está cheio!';
+  } else if ((carro.quantidadePessoas <= carro.assentos) && ((carro.quantidadePessoas + x) <= carro.assentos)) {
+    carro.quantidadePessoas = carro.quantidadePessoas + x;
+    return 'Já temos ' + carro.quantidadePessoas + ' pessoas no carro!';
+  } else if (((carro.quantidadePessoas + x) > carro.assentos) && (carro.assentos - carro.quantidadePessoas === 1)) {
+    return 'Só cabe mais uma pessoa!';
+  } else if ((carro.quantidadePessoas + x) > carro.assentos) {
+    return 'Só cabem mais ' + (carro.assentos-carro.quantidadePessoas) + ' pessoas no carro!';
+  }
+}
 
 /*
 Agora vamos verificar algumas informações do carro. Para as respostas abaixo,
