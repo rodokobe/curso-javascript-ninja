@@ -3,38 +3,53 @@ Declare uma variável chamada `sum` e atribua a ela uma função chamada
 `calculateSum`. A função deve receber dois parâmetros e retornar a soma
 desses parâmetros.
 */
-// ?
+
+var sum = function calculateSum(x, y) {
+  return x + y;
+}
 
 /*
 Invoque a função criada acima, passando dois números que serão somados, e mostre
 o resultado no console, com a frase:
 "A soma de [VALOR 1] e [VALOR2] é igual a [RESULTADO]."
 */
-// ?
+
+var sum = function calculateSum(x, y) {
+  return 'A soma de ' + x + ' e ' + y + ' é igual a ' + (x + y);
+}
+
 
 /*
 Mostre no console o nome da função criada acima, com a frase:
 "O nome da função que faz a soma é [NOME DA FUNÇÃO]."
 */
-// ?
+
+'O nome da função que faz a soma é ' + sum.name;
 
 /*
 Crie uma função literal chamada `showName`. Essa função deve retornar o
 seu nome.
 */
-// ?
+
+function showName() {
+  return showName.name;
+}
 
 /*
 Declare uma variável chamada `varShowName` que recebe a função criada acima.
 */
-// ?
+
+var varShowName = function showName() {
+  return showName.name;
+}
 
 /*
 Usando a variável criada acima, mostre no console o nome e o retorno da função
 atribuída a ela, com a seguinte frase:
 "A função [NOME DA FUNÇÃO] retorna [RETORNO DA FUNÇÃO]."
 */
-// ?
+
+'A função ' + varShowName() + ' retorna ' + varShowName();
 
 /*
 Crie uma função literal chamada `calculator`, que funcione assim:
@@ -48,7 +63,39 @@ vai efetuar. Será uma string com os valores `+`, `-`, `*`, `/` ou `%`;
   - Se o operador não for válido, retornar a frase:
   "Operação inválida."
 */
-// ?
+var resultado = 0;
+function calculator(operador) {
+  switch (operador) {
+    case '+':
+      return function soma(x, y) {
+        return (resultado = x + y);
+      };
+      break;
+    case '-':
+      return function subtrai(x, y) {
+        return (resultado = x - y);
+      };
+      break;
+    case '*':
+      return function multiplica(x, y) {
+        return (resultado = x * y);
+      };
+      break;
+    case '/':
+      return function divide(x, y) {
+        return (resultado = x / y);
+      };
+      break;
+    case '%':
+      return function modulo(x, y) {
+        return (resultado = x % y);
+      };
+      break;
+    default:
+      return 'Operação inválida';
+  }
+  return 'Resultado da operação: ' + x + ' ' + operador + ' ' + y + ' = ' + resultado;
+}
 
 /*
 Declare uma variável chamada `sum`, que receberá a função acima, passando como
